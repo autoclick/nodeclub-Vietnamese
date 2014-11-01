@@ -11,7 +11,7 @@
     <div class='user_info'>
       <a class='dark reply_author' href="/user/<%= reply.author.loginname %>"><%= reply.author.loginname %>
       </a>
-      <a class="reply_time" href="#<%= reply._id %>"><%= indexInCollection + 1 %> Sàn nhà •<%= reply.friendly_create_at
+      <a class="reply_time" href="#<%= reply._id %>"><%= indexInCollection + 1 %> #<%= indexInCollection + 1 %>•<%= reply.friendly_create_at •<%= reply.friendly_create_at
         %></a>
     </div>
     <div class='user_action'>
@@ -37,7 +37,7 @@
       <% } %>
       <span>
         <% if(typeof(current_user) !== 'undefined'){ %>
-          <img class='dark reply2_btn' src="<%- staticFile('/public/images/reply_icon_16.png') %>" height="16" width="16" title=" Đáp lại ">
+          <img class='dark reply2_btn' src="<%- staticFile('/public/images/reply_icon_16.png') %>" height="16" width="16" title=" Trả lời ">
         <% } %>
       </span>
     </div>
@@ -59,7 +59,7 @@
 
             <div class='editor_buttons'>
               <input class='span-primary reply2_submit_btn submit_btn'
-                     type="submit" data-id='<%= reply._id %>' data-loading-text=" Đáp lại  Trong .." value=" Đáp lại ">
+                     type="submit" data-id='<%= reply._id %>' data-loading-text=" Trả lời  Trong .." value=" Trả lời ">
             </div>
           </div>
 

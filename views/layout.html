@@ -73,7 +73,7 @@
         <input type='text' id='q' name='q' class='search-query span3' value=''/>
       </form>
       <ul class='nav pull-right'>
-        <li><a href='/'> Nhà </a></li>
+        <li><a href='/'> Trang chủ </a></li>
         <% if (typeof(current_user) !== 'undefined'){ %>
         <li>
             <a href='/my/messages'>
@@ -96,7 +96,7 @@
         <% if (typeof(current_user) !== 'undefined') { %>
         <li><a href='/setting'> Thiết lập </a></li>
         <li>
-          <a href='/signout' data-method="post" rel="nofollow"> Để rơi </a>
+          <a href='/signout' data-method="post" rel="nofollow"> Thoát </a>
         </li>
         <% } else { %>
         <li><a href='/signup'> Đăng ký </a></li>

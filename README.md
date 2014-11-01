@@ -8,6 +8,8 @@ nodeclub đã được dịch tự động sang Tiếng việt - bởi Google Tr
 - Đã xóa module pm2
 
 '''
+cài đặt 'make' 
+http://sourceforge.net/projects/gnuwin32/files/make/
 # Các bước cài đặt
 1. install 'node.js' 'mongodb'
 2. run mongod

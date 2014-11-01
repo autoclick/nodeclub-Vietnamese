@@ -54,7 +54,7 @@ exports.fetchUsers = fetchUsers;
  * @param {String} text  Nội dung văn bản 
  * @param {String} topicId  Chủ đề ID
  * @param {String} authorId  Tác giả ID
- * @param {String} reply_id  Đáp lại ID
+ * @param {String} reply_id  Trả lời ID
  * @param {Function} callback  Các chức năng gọi lại 
  */
 exports.sendMessageToMentionUsers = function (text, topicId, authorId, reply_id, callback) {

@@ -21,7 +21,7 @@ var renderHelpers = require('../common/render_helpers');
 function indexCache() {
   var limit = config.list_topic_count;
   //  Đối với tất cả các diễn đàn （tab） Làm bộ nhớ cache 
-  [['', ' Toàn thể ']].concat(config.tabs).forEach(function (pair) {
+  [['', ' Tất cả ']].concat(config.tabs).forEach(function (pair) {
     //  Chỉ có bộ nhớ cache trang đầu tiên , page = 1。options  Lý do tại sao là bởi vì mỗi thế hệ  mongoose  Câu hỏi ，
     //  Sẽ thay đổi nó 
     var options = { skip: (1 - 1) * limit, limit: limit, sort: '-top -last_reply_at'};

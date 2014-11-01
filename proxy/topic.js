@@ -118,7 +118,7 @@ exports.getLimit5w = function (callback) {
  * - message,  Tin tức 
  * - topic,  Chủ đề 
  * - author,  Chủ đề  Tác giả 
- * - replies,  Chủ đề  Đáp lại 
+ * - replies,  Chủ đề  Trả lời 
  * @param {String} id  Chủ đề ID
  * @param {Function} callback  Các chức năng gọi lại 
  */
@@ -156,7 +156,7 @@ exports.getFullTopic = function (id, callback) {
 /**
  *  Cập nhật  Chủ đề  Của  Bài trả lời cuối  Thông tin 
  * @param {String} topicId  Chủ đề ID
- * @param {String} replyId  Đáp lại ID
+ * @param {String} replyId  Trả lời ID
  * @param {Function} callback  Các chức năng gọi lại 
  */
 exports.updateLastReply = function (topicId, replyId, callback) {
@@ -181,7 +181,7 @@ exports.getTopic = function (id, callback) {
 };
 
 /**
- *  Sẽ  Khi nào  Cách đây  Chủ đề  Đáp lại  Đếm Ít 1， Xóa bỏ  Đáp lại  Khi nào  Sử dụng 
+ *  Sẽ  Khi nào  Cách đây  Chủ đề  Trả lời  Đếm Ít 1， Xóa bỏ  Trả lời  Khi nào  Sử dụng 
  * @param {String} id  Chủ đề ID
  * @param {Function} callback  Các chức năng gọi lại 
  */

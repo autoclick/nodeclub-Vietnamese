@@ -8,7 +8,7 @@ var at = require('../common/at');
 
 /**
  *  Nhận được một tin nhắn trả lời 
- * @param {String} id  Đáp lại ID
+ * @param {String} id  Trả lời ID
  * @param {Function} callback  Các chức năng gọi lại 
  */
 exports.getReply = function (id, callback) {
@@ -16,11 +16,11 @@ exports.getReply = function (id, callback) {
 };
 
 /**
- *  Theo  Đáp lại ID， Được  Đáp lại 
+ *  Theo  Trả lời ID， Được  Trả lời 
  * Callback:
  * - err,  Trường hợp ngoại lệ cơ sở dữ liệu 
- * - reply,  Đáp lại  Nội dung 
- * @param {String} id  Đáp lại ID
+ * - reply,  Trả lời  Nội dung 
+ * @param {String} id  Trả lời ID
  * @param {Function} callback  Các chức năng gọi lại 
  */
 exports.getReplyById = function (id, callback) {
@@ -55,10 +55,10 @@ exports.getReplyById = function (id, callback) {
 };
 
 /**
- *  Theo  Chủ đề ID， Được  Đáp lại  Danh sách 
+ *  Theo  Chủ đề ID， Được  Trả lời  Danh sách 
  * Callback:
  * - err,  Trường hợp ngoại lệ cơ sở dữ liệu 
- * - replies,  Đáp lại  Danh sách 
+ * - replies,  Trả lời  Danh sách 
  * @param {String} id  Chủ đề ID
  * @param {Function} callback  Các chức năng gọi lại 
  */
@@ -101,11 +101,11 @@ exports.getRepliesByTopicId = function (id, cb) {
 };
 
 /**
- *  Tạo và lưu một  Đáp lại  Thông tin 
- * @param {String} content  Đáp lại  Nội dung 
+ *  Tạo và lưu một  Trả lời  Thông tin 
+ * @param {String} content  Trả lời  Nội dung 
  * @param {String} topicId  Chủ đề ID
- * @param {String} authorId  Đáp lại  Tác giả 
- * @param {String} [replyId]  Đáp lại ID， Khi hai  Đáp lại  Khi thiết lập giá trị này 
+ * @param {String} authorId  Trả lời  Tác giả 
+ * @param {String} [replyId]  Trả lời ID， Khi hai  Trả lời  Khi thiết lập giá trị này 
  * @param {Function} callback  Các chức năng gọi lại 
  */
 exports.newAndSave = function (content, topicId, authorId, replyId, callback) {
@@ -133,7 +133,7 @@ exports.getRepliesByAuthorId = function (authorId, opt, callback) {
   Reply.find({author_id: authorId}, {}, opt, callback);
 };
 
-//  Qua  author_id  Được  Đáp lại  Tổng số 
+//  Qua  author_id  Được  Trả lời  Tổng số 
 exports.getCountByAuthorId = function (authorId, callback) {
   Reply.count({author_id: authorId}, callback);
 };
