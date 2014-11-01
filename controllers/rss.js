@@ -7,7 +7,7 @@ var marked = require('marked');
 exports.index = function (req, res, next) {
   if (!config.rss) {
     res.statusCode = 404;
-    return res.send('Please set `rss` in config.js');
+    return res.send('Please set 'rss' in config.js');
   }
   res.contentType('application/xml');
   if (!config.debug && mcache.get('rss')) {

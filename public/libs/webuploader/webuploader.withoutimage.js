@@ -60,7 +60,7 @@
             var module = modules[id] || root[id];
 
             if (!module) {
-                throw new Error('`' + id + '` is undefined');
+                throw new Error(''' + id + '' is undefined');
             }
 
             return module;
@@ -177,18 +177,18 @@
     */
 
     /**
-    * Web Uploader内部类的详细说明，以下提及的功能类，都可以在`WebUploader`这个变量中访问到。
+    * Web Uploader内部类的详细说明，以下提及的功能类，都可以在'WebUploader'这个变量中访问到。
     *
-    * As you know, Web Uploader的每个文件都是用过[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)规范中的`define`组织起来的, 每个Module都会有个module id.
+    * As you know, Web Uploader的每个文件都是用过[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)规范中的'define'组织起来的, 每个Module都会有个module id.
     * 默认module id为该文件的路径，而此路径将会转化成名字空间存放在WebUploader中。如：
     *
-    * * module `base`：WebUploader.Base
-    * * module `file`: WebUploader.File
-    * * module `lib/dnd`: WebUploader.Lib.Dnd
-    * * module `runtime/html5/dnd`: WebUploader.Runtime.Html5.Dnd
+    * * module 'base'：WebUploader.Base
+    * * module 'file': WebUploader.File
+    * * module 'lib/dnd': WebUploader.Lib.Dnd
+    * * module 'runtime/html5/dnd': WebUploader.Runtime.Html5.Dnd
     *
     *
-    * 以下文档中对类的使用可能省略掉了`WebUploader`前缀。
+    * 以下文档中对类的使用可能省略掉了'WebUploader'前缀。
     * @module WebUploader
     * @title WebUploader API文档
     */
@@ -252,12 +252,12 @@
             /**
             * @description  简单的浏览器检查结果。
             *
-            * * `webkit`  webkit版本号，如果浏览器为非webkit内核，此属性为`undefined`。
-            * * `chrome`  chrome浏览器版本号，如果浏览器为chrome，此属性为`undefined`。
-            * * `ie`  ie浏览器版本号，如果浏览器为非ie，此属性为`undefined`。**暂不支持ie10+**
-            * * `firefox`  firefox浏览器版本号，如果浏览器为非firefox，此属性为`undefined`。
-            * * `safari`  safari浏览器版本号，如果浏览器为非safari，此属性为`undefined`。
-            * * `opera`  opera浏览器版本号，如果浏览器为非opera，此属性为`undefined`。
+            * * 'webkit'  webkit版本号，如果浏览器为非webkit内核，此属性为'undefined'。
+            * * 'chrome'  chrome浏览器版本号，如果浏览器为chrome，此属性为'undefined'。
+            * * 'ie'  ie浏览器版本号，如果浏览器为非ie，此属性为'undefined'。**暂不支持ie10+**
+            * * 'firefox'  firefox浏览器版本号，如果浏览器为非firefox，此属性为'undefined'。
+            * * 'safari'  safari浏览器版本号，如果浏览器为非safari，此属性为'undefined'。
+            * * 'opera'  opera浏览器版本号，如果浏览器为非opera，此属性为'undefined'。
             *
             * @property {Object} [browser]
             */
@@ -286,8 +286,8 @@
             /**
             * @description  操作系统检查结果。
             *
-            * * `android`  如果在android浏览器环境下，此值为对应的android版本号，否则为`undefined`。
-            * * `ios` 如果在ios浏览器环境下，此值为对应的ios版本号，否则为`undefined`。
+            * * 'android'  如果在android浏览器环境下，此值为对应的android版本号，否则为'undefined'。
+            * * 'ios' 如果在ios浏览器环境下，此值为对应的ios版本号，否则为'undefined'。
             * @property {Object} [os]
             */
             os: (function (ua) {
@@ -376,7 +376,7 @@
             noop: noop,
 
             /**
-            * 返回一个新的方法，此方法将已指定的`context`来执行。
+            * 返回一个新的方法，此方法将已指定的'context'来执行。
             * @grammar Base.bindFn( fn, context ) => Function
             * @method bindFn
             * @example
@@ -543,8 +543,8 @@
             /**
             * 绑定事件。
             *
-            * `callback`方法在执行时，arguments将会来源于trigger的时候携带的参数。如
-            * ```javascript
+            * 'callback'方法在执行时，arguments将会来源于trigger的时候携带的参数。如
+            * '''javascript
             * var obj = {};
             *
             * // 使得obj有事件行为
@@ -555,18 +555,18 @@
             * });
             *
             * obj.trigger( 'testa', 'arg1', 'arg2' );
-            * ```
+            * '''
             *
-            * 如果`callback`中，某一个方法`return false`了，则后续的其他`callback`都不会被执行到。
-            * 切会影响到`trigger`方法的返回值，为`false`。
+            * 如果'callback'中，某一个方法'return false'了，则后续的其他'callback'都不会被执行到。
+            * 切会影响到'trigger'方法的返回值，为'false'。
             *
-            * `on`还可以用来添加一个特殊事件`all`, 这样所有的事件触发都会响应到。同时此类`callback`中的arguments有一个不同处，
-            * 就是第一个参数为`type`，记录当前是什么事件在触发。此类`callback`的优先级比脚低，会再正常`callback`执行完后触发。
-            * ```javascript
+            * 'on'还可以用来添加一个特殊事件'all', 这样所有的事件触发都会响应到。同时此类'callback'中的arguments有一个不同处，
+            * 就是第一个参数为'type'，记录当前是什么事件在触发。此类'callback'的优先级比脚低，会再正常'callback'执行完后触发。
+            * '''javascript
             * obj.on( 'all', function( type, arg1, arg2 ) {
             *     console.log( type, arg1, arg2 ); // => 'testa', 'arg1', 'arg2'
             * });
-            * ```
+            * '''
             *
             * @method on
             * @grammar on( name, callback[, context] ) => self
@@ -817,12 +817,12 @@
 
             /**
             * 获取文件统计信息。返回一个包含一下信息的对象。
-            * * `successNum` 上传成功的文件数
-            * * `successNum` 上传中的文件数
-            * * `uploadFailNum` 上传失败的文件数
-            * * `cancelNum` 被删除的文件数
-            * * `invalidNum` 无效的文件数
-            * * `queueNum` 还在队列中的文件数
+            * * 'successNum' 上传成功的文件数
+            * * 'successNum' 上传中的文件数
+            * * 'uploadFailNum' 上传失败的文件数
+            * * 'cancelNum' 被删除的文件数
+            * * 'invalidNum' 无效的文件数
+            * * 'queueNum' 还在队列中的文件数
             * @method getStats
             * @grammar getStats() => Object
             */
@@ -1254,7 +1254,7 @@
             },
 
             /**
-            * 发送命令。当传入`callback`或者`handler`中返回`promise`时。返回一个当所有`handler`中的promise都完成后完成的新`promise`。
+            * 发送命令。当传入'callback'或者'handler'中返回'promise'时。返回一个当所有'handler'中的promise都完成后完成的新'promise'。
             * @method request
             * @grammar request( command, args ) => * | Promise
             * @grammar request( command, args, callback ) => Promise
@@ -1482,7 +1482,7 @@
         var $ = Base.$;
 
         /**
-        * @property {Selector} [paste=undefined]  指定监听paste事件的容器，如果不指定，不启用此功能。此功能为通过粘贴来添加截屏的图片。建议设置为`document.body`.
+        * @property {Selector} [paste=undefined]  指定监听paste事件的容器，如果不指定，不启用此功能。此功能为通过粘贴来添加截屏的图片。建议设置为'document.body'.
         * @namespace options
         * @for Uploader
         */
@@ -1754,10 +1754,10 @@
             * @for Uploader
             * @description 指定选择文件的按钮容器，不指定则不创建按钮。
             *
-            * * `id` {Seletor} 指定选择文件的按钮容器，不指定则不创建按钮。
-            * * `label` {String} 请采用 `innerHTML` 代替
-            * * `innerHTML` {String} 指定按钮文字。不指定时优先从指定的容器中看是否自带文字。
-            * * `multiple` {Boolean} 是否开起同时选择多个文件能力。
+            * * 'id' {Seletor} 指定选择文件的按钮容器，不指定则不创建按钮。
+            * * 'label' {String} 请采用 'innerHTML' 代替
+            * * 'innerHTML' {String} 指定按钮文字。不指定时优先从指定的容器中看是否自带文字。
+            * * 'multiple' {Boolean} 是否开起同时选择多个文件能力。
             */
             pick: null,
 
@@ -1767,19 +1767,19 @@
             * @for Uploader
             * @description 指定接受哪些类型的文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
             *
-            * * `title` {String} 文字描述
-            * * `extensions` {String} 允许的文件后缀，不带点，多个用逗号分割。
-            * * `mimeTypes` {String} 多个用逗号分割。
+            * * 'title' {String} 文字描述
+            * * 'extensions' {String} 允许的文件后缀，不带点，多个用逗号分割。
+            * * 'mimeTypes' {String} 多个用逗号分割。
             *
             * 如：
             *
-            * ```
+            * '''
             * {
             *     title: 'Images',
             *     extensions: 'gif,jpg,jpeg,bmp,png',
             *     mimeTypes: 'image/*'
             * }
-            * ```
+            * '''
             */
             accept: null/*{
                 title: 'Images',
@@ -1967,7 +1967,7 @@
         $.extend(WUFile.prototype, {
 
             /**
-            * 设置状态，状态变化时会触发`change`事件。
+            * 设置状态，状态变化时会触发'change'事件。
             * @method setStatus
             * @grammar setStatus( status[, statusText] );
             * @param {File.Status|String} status [文件状态值](#WebUploader:File:File.Status)
@@ -2031,14 +2031,14 @@
 
         /**
         * 文件状态值，具体包括以下几种类型：
-        * * `inited` 初始状态
-        * * `queued` 已经进入队列, 等待上传
-        * * `progress` 上传中
-        * * `complete` 上传完成。
-        * * `error` 上传出错，可重试
-        * * `interrupt` 上传中断，可续传。
-        * * `invalid` 文件不合格，不能重试上传。会自动从队列中移除。
-        * * `cancelled` 文件被移除。
+        * * 'inited' 初始状态
+        * * 'queued' 已经进入队列, 等待上传
+        * * 'progress' 上传中
+        * * 'complete' 上传完成。
+        * * 'error' 上传出错，可重试
+        * * 'interrupt' 上传中断，可续传。
+        * * 'invalid' 文件不合格，不能重试上传。会自动从队列中移除。
+        * * 'cancelled' 文件被移除。
         * @property {Object} Status
         * @namespace File
         * @class File
@@ -2079,12 +2079,12 @@
 
             /**
             * 统计文件数。
-            * * `numOfQueue` 队列中的文件数。
-            * * `numOfSuccess` 上传成功的文件数
-            * * `numOfCancel` 被移除的文件数
-            * * `numOfProgress` 正在上传中的文件数
-            * * `numOfUploadFailed` 上传错误的文件数。
-            * * `numOfInvalid` 无效的文件数。
+            * * 'numOfQueue' 队列中的文件数。
+            * * 'numOfSuccess' 上传成功的文件数
+            * * 'numOfCancel' 被移除的文件数
+            * * 'numOfProgress' 正在上传中的文件数
+            * * 'numOfUploadFailed' 上传错误的文件数。
+            * * 'numOfInvalid' 无效的文件数。
             * @property {Object} stats
             */
             this.stats = {
@@ -2384,7 +2384,7 @@
             /**
             * @event beforeFileQueued
             * @param {File} file File对象
-            * @description 当文件被加入队列之前触发，此事件的handler返回值为`false`，则此文件不会被添加进入队列。
+            * @description 当文件被加入队列之前触发，此事件的handler返回值为'false'，则此文件不会被添加进入队列。
             * @for  Uploader
             */
 
@@ -2400,7 +2400,7 @@
 
                 file = me._wrapFile(file);
 
-                // 不过类型判断允许不允许，先派送 `beforeFileQueued`
+                // 不过类型判断允许不允许，先派送 'beforeFileQueued'
                 if (!me.owner.trigger('beforeFileQueued', file)) {
                     return;
                 }
@@ -2596,7 +2596,7 @@
             },
 
             /**
-            * 预测Uploader将采用哪个`Runtime`
+            * 预测Uploader将采用哪个'Runtime'
             * @grammar predictRuntmeType() => String
             * @method predictRuntmeType
             * @for  Uploader
@@ -2832,14 +2832,14 @@
             * @property {Object} [method='POST']
             * @namespace options
             * @for Uploader
-            * @description 文件上传方式，`POST`或者`GET`。
+            * @description 文件上传方式，'POST'或者'GET'。
             */
 
             /**
             * @property {Object} [sendAsBinary=false]
             * @namespace options
             * @for Uploader
-            * @description 是否已二进制的流的方式发送文件，这样整个上传内容`php://input`都为文件内容，
+            * @description 是否已二进制的流的方式发送文件，这样整个上传内容'php://input'都为文件内容，
             * 其他参数在$_GET数组中。
             */
         });
@@ -2991,7 +2991,7 @@
             },
 
             /**
-            * 判断`Uplaode`r是否正在上传中。
+            * 判断'Uplaode'r是否正在上传中。
             * @grammar isInProgress() => Boolean
             * @method isInProgress
             * @for  Uploader
@@ -3223,7 +3223,7 @@
             * @event uploadAccept
             * @param {Object} object
             * @param {Object} ret 服务端的返回数据，json格式，如果服务端不是json格式，从ret._raw中取数据，自行解析。
-            * @description 当某个文件上传到服务端响应后，会派送此事件来询问服务端响应是否有效。如果此事件handler返回值为`false`, 则此文件将派送`server`类型的`uploadError`事件。
+            * @description 当某个文件上传到服务端响应后，会派送此事件来询问服务端响应是否有效。如果此事件handler返回值为'false', 则此文件将派送'server'类型的'uploadError'事件。
             * @for  Uploader
             */
 
@@ -3429,10 +3429,10 @@
         /**
         * @event error
         * @param {String} type 错误类型。
-        * @description 当validate不通过时，会以派送错误事件的形式通知调用者。通过`upload.on('error', handler)`可以捕获到此类错误，目前有以下错误会在特定的情况下派送错来。
+        * @description 当validate不通过时，会以派送错误事件的形式通知调用者。通过'upload.on('error', handler)'可以捕获到此类错误，目前有以下错误会在特定的情况下派送错来。
         *
-        * * `Q_EXCEED_NUM_LIMIT` 在设置了`fileNumLimit`且尝试给`uploader`添加的文件数量超出这个值时派送。
-        * * `Q_EXCEED_SIZE_LIMIT` 在设置了`Q_EXCEED_SIZE_LIMIT`且尝试给`uploader`添加的文件总大小超出这个值时派送。
+        * * 'Q_EXCEED_NUM_LIMIT' 在设置了'fileNumLimit'且尝试给'uploader'添加的文件数量超出这个值时派送。
+        * * 'Q_EXCEED_SIZE_LIMIT' 在设置了'Q_EXCEED_SIZE_LIMIT'且尝试给'uploader'添加的文件总大小超出这个值时派送。
         * @for  Uploader
         */
 

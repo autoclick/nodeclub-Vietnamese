@@ -2787,7 +2787,7 @@ var CodeMirror = (function() {
   // PROTOTYPE
 
   // The publicly visible API. Note that operation(null, f) means
-  // 'wrap f in an operation, performed on its `this` parameter'
+  // 'wrap f in an operation, performed on its 'this' parameter'
 
   CodeMirror.prototype = {
     constructor: CodeMirror,
@@ -5438,7 +5438,7 @@ var CodeMirror = (function() {
         if (/\w/.test(str.charAt(i - 2)) && /[^\-?\.]/.test(str.charAt(i))) return true;
         if (i > 2 && /[\d\.,]/.test(str.charAt(i - 2)) && /[\d\.,]/.test(str.charAt(i))) return false;
       }
-      return /[~!#%&*)=+}\]|\"\.>,:;][({[<]|-[^\-?\.\u2010-\u201f\u2026]|\?[\w~`@#$%\^&*(_=+{[|><]|…[\w~`@#$%\^&*(_=+{[><]/.test(str.slice(i - 1, i + 1));
+      return /[~!#%&*)=+}\]|\"\.>,:;][({[<]|-[^\-?\.\u2010-\u201f\u2026]|\?[\w~'@#$%\^&*(_=+{[|><]|…[\w~'@#$%\^&*(_=+{[><]/.test(str.slice(i - 1, i + 1));
     };
 
   var knownScrollbarWidth;
@@ -5507,7 +5507,7 @@ var CodeMirror = (function() {
                   19: "Pause", 20: "CapsLock", 27: "Esc", 32: "Space", 33: "PageUp", 34: "PageDown", 35: "End",
                   36: "Home", 37: "Left", 38: "Up", 39: "Right", 40: "Down", 44: "PrintScrn", 45: "Insert",
                   46: "Delete", 59: ";", 91: "Mod", 92: "Mod", 93: "Mod", 109: "-", 107: "=", 127: "Delete",
-                  186: ";", 187: "=", 188: ",", 189: "-", 190: ".", 191: "/", 192: "`", 219: "[", 220: "\\",
+                  186: ";", 187: "=", 188: ",", 189: "-", 190: ".", 191: "/", 192: "'", 219: "[", 220: "\\",
                   221: "]", 222: "'", 63276: "PageUp", 63277: "PageDown", 63275: "End", 63273: "Home",
                   63234: "Left", 63232: "Up", 63235: "Right", 63233: "Down", 63302: "Insert", 63272: "Delete"};
   CodeMirror.keyNames = keyNames;
@@ -6215,7 +6215,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   if (modeCfg.underscoresBreakWords === undefined)
     modeCfg.underscoresBreakWords = true;
 
-  // Turn on fenced code blocks? ("```" to start/end)
+  // Turn on fenced code blocks? ("'''" to start/end)
   if (modeCfg.fencedCodeBlocks === undefined) modeCfg.fencedCodeBlocks = false;
 
   // Turn on task lists? ("- [ ] " and "- [x] ")
@@ -6244,7 +6244,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   ,   olRE = /^[0-9]+\.\s+/
   ,   taskListRE = /^\[(x| )\](?=\s)/ // Must follow ulRE or olRE
   ,   headerRE = /^(?:\={1,}|-{1,})$/
-  ,   textRE = /^[^!\[\]*_\\<>` "'(]+/;
+  ,   textRE = /^[^!\[\]*_\\<>' "'(]+/;
 
   function switchInline(stream, state, f) {
     state.f = state.inline = f;
@@ -6323,7 +6323,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
       if (modeCfg.taskLists && stream.match(taskListRE, false)) {
         state.taskList = true;
       }
-    } else if (modeCfg.fencedCodeBlocks && stream.match(/^```([\w+#]*)/, true)) {
+    } else if (modeCfg.fencedCodeBlocks && stream.match(/^'''([\w+#]*)/, true)) {
       // try switching mode
       state.localMode = getMode(RegExp.$1);
       if (state.localMode) state.localState = state.localMode.startState();
@@ -6349,7 +6349,7 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
   }
 
   function local(stream, state) {
-    if (stream.sol() && stream.match(/^```/, true)) {
+    if (stream.sol() && stream.match(/^'''/, true)) {
       state.localMode = state.localState = null;
       state.f = inlineNormal;
       state.block = blockNormal;
@@ -6448,10 +6448,10 @@ CodeMirror.defineMode("markdown", function(cmCfg, modeCfg) {
     }
 
     // If this block is changed, it may need to be updated in GFM mode
-    if (ch === '`') {
+    if (ch === ''') {
       var t = getType(state);
       var before = stream.pos;
-      stream.eatWhile('`');
+      stream.eatWhile(''');
       var difference = 1 + stream.pos - before;
       if (!state.code) {
         codeDepth = difference;

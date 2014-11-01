@@ -17,5 +17,5 @@ PR.registerLangHandler(PR.createSimpleLexer([
   ["typ", /^@[A-Z]+[a-z][\w$@]*/, a],
   ["pln", /^'?[$_a-z][\w$@]*/i, a],
   ["lit", /^(?:0x[\da-f]+|(?:\d(?:_\d+)*\d*(?:\.\d*)?|\.\d\+)(?:e[+-]?\d+)?)[a-z]*/i, a, "0123456789"],
-  ["pun", /^.[^\s\w"-$'./@`]*/, a]
+  ["pun", /^.[^\s\w"-$'./@']*/, a]
 ]), ["n", "nemerle"]);

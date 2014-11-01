@@ -60,7 +60,7 @@
             var module = modules[id] || root[id];
 
             if (!module) {
-                throw new Error('`' + id + '` is undefined');
+                throw new Error(''' + id + '' is undefined');
             }
 
             return module;
@@ -177,18 +177,18 @@
     */
 
     /**
-    * Web Uploader Nội bộ  Danh mục  Của  Mô tả chi tiết ， Đề cập dưới đây  Của  Hàm số  Danh mục ， Tất cả OK trong `WebUploader` Điều này truy cập biến 。
+    * Web Uploader Nội bộ  Danh mục  Của  Mô tả chi tiết ， Đề cập dưới đây  Của  Hàm số  Danh mục ， Tất cả OK trong 'WebUploader' Điều này truy cập biến 。
     *
-    * As you know, Web Uploader Của  Mỗi tập tin được sử dụng [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) Đặc điểm kỹ thuật  Của `define` Tổ chức  Của ,  Mỗi Module Sẽ có một module id.
+    * As you know, Web Uploader Của  Mỗi tập tin được sử dụng [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD) Đặc điểm kỹ thuật  Của 'define' Tổ chức  Của ,  Mỗi Module Sẽ có một module id.
     *  Vỡ nợ module id Các tập tin  Của  Đường dẫn ， Và điều này  Đường dẫn  Sẽ được chuyển đổi thành một không gian lưu trữ trong tên WebUploader Trong 。 Như ：
     *
-    * * module `base`：WebUploader.Base
-    * * module `file`: WebUploader.File
-    * * module `lib/dnd`: WebUploader.Lib.Dnd
-    * * module `runtime/html5/dnd`: WebUploader.Runtime.Html5.Dnd
+    * * module 'base'：WebUploader.Base
+    * * module 'file': WebUploader.File
+    * * module 'lib/dnd': WebUploader.Lib.Dnd
+    * * module 'runtime/html5/dnd': WebUploader.Runtime.Html5.Dnd
     *
     *
-    *  Các tài liệu sau  Trong  Đúng  Danh mục  Của  Dùng  Có thể được bỏ qua `WebUploader` Tiếp đầu ngữ 。
+    *  Các tài liệu sau  Trong  Đúng  Danh mục  Của  Dùng  Có thể được bỏ qua 'WebUploader' Tiếp đầu ngữ 。
     * @module WebUploader
     * @title WebUploader API Hồ sơ 
     */
@@ -252,12 +252,12 @@
             /**
             * @description   Đơn giản  Của  Kết quả kiểm tra trình duyệt 。
             *
-            * * `webkit`  webkit Số phiên bản ， Trong trường hợp  Trình duyệt không webkit Hạt nhân ， Khách sạn này là `undefined`。
-            * * `chrome`  chrome Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt  Vì chrome， Khách sạn này là `undefined`。
-            * * `ie`  ie Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không ie， Khách sạn này là `undefined`。** Không được hỗ trợ ie10+**
-            * * `firefox`  firefox Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không firefox， Khách sạn này là `undefined`。
-            * * `safari`  safari Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không safari， Khách sạn này là `undefined`。
-            * * `opera`  opera Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không opera， Khách sạn này là `undefined`。
+            * * 'webkit'  webkit Số phiên bản ， Trong trường hợp  Trình duyệt không webkit Hạt nhân ， Khách sạn này là 'undefined'。
+            * * 'chrome'  chrome Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt  Vì chrome， Khách sạn này là 'undefined'。
+            * * 'ie'  ie Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không ie， Khách sạn này là 'undefined'。** Không được hỗ trợ ie10+**
+            * * 'firefox'  firefox Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không firefox， Khách sạn này là 'undefined'。
+            * * 'safari'  safari Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không safari， Khách sạn này là 'undefined'。
+            * * 'opera'  opera Trình duyệt  Số phiên bản ， Trong trường hợp  Trình duyệt không opera， Khách sạn này là 'undefined'。
             *
             * @property {Object} [browser]
             */
@@ -286,8 +286,8 @@
             /**
             * @description   Kết quả thử nghiệm Hệ điều hành 。
             *
-            * * `android`   Trong trường hợp  Trong android Trình duyệt  Môi trường ， Giá trị này  Vì  Đúng  Nên  Của android Số phiên bản ， Nếu không thì  Vì `undefined`。
-            * * `ios`  Trong trường hợp  Trong ios Trình duyệt  Môi trường ， Giá trị này  Vì  Đúng  Nên  Của ios Số phiên bản ， Nếu không thì  Vì `undefined`。
+            * * 'android'   Trong trường hợp  Trong android Trình duyệt  Môi trường ， Giá trị này  Vì  Đúng  Nên  Của android Số phiên bản ， Nếu không thì  Vì 'undefined'。
+            * * 'ios'  Trong trường hợp  Trong ios Trình duyệt  Môi trường ， Giá trị này  Vì  Đúng  Nên  Của ios Số phiên bản ， Nếu không thì  Vì 'undefined'。
             * @property {Object} [os]
             */
             os: (function (ua) {
@@ -376,7 +376,7 @@
             noop: noop,
 
             /**
-            * 返回一个新 Của  Phương pháp ，此 Phương pháp 将已指定 Của `context`来执行。
+            * 返回一个新 Của  Phương pháp ，此 Phương pháp 将已指定 Của 'context'来执行。
             * @grammar Base.bindFn( fn, context ) => Function
             * @method bindFn
             * @example
@@ -543,8 +543,8 @@
             /**
             * 绑定事件。
             *
-            * `callback` Phương pháp  Trong 执行时，arguments将会来源于trigger Của 时候携带 Của 参数。 Như 
-            * ```javascript
+            * 'callback' Phương pháp  Trong 执行时，arguments将会来源于trigger Của 时候携带 Của 参数。 Như 
+            * '''javascript
             * var obj = {};
             *
             * // 使得obj有事件行 Vì 
@@ -555,18 +555,18 @@
             * });
             *
             * obj.trigger( 'testa', 'arg1', 'arg2' );
-            * ```
+            * '''
             *
-            *  Trong trường hợp `callback` Trong ，某一个 Phương pháp `return false`了，则后续 Của 其他`callback`都不会被执行到。
-            * 切会影响到`trigger` Phương pháp  Của 返回值， Vì `false`。
+            *  Trong trường hợp 'callback' Trong ，某一个 Phương pháp 'return false'了，则后续 Của 其他'callback'都不会被执行到。
+            * 切会影响到'trigger' Phương pháp  Của 返回值， Vì 'false'。
             *
-            * `on`还可以用来添加一个特殊事件`all`, 这样所有 Của 事件触发都会响 Nên 到。同时此 Danh mục `callback` Trong  Của arguments有一个不同处，
-            * 就是第一个参数 Vì `type`，记录当前是什么事件 Trong 触发。此 Danh mục `callback` Của 优先级比脚低，会再正常`callback`执行完后触发。
-            * ```javascript
+            * 'on'还可以用来添加一个特殊事件'all', 这样所有 Của 事件触发都会响 Nên 到。同时此 Danh mục 'callback' Trong  Của arguments有一个不同处，
+            * 就是第一个参数 Vì 'type'，记录当前是什么事件 Trong 触发。此 Danh mục 'callback' Của 优先级比脚低，会再正常'callback'执行完后触发。
+            * '''javascript
             * obj.on( 'all', function( type, arg1, arg2 ) {
             *     console.log( type, arg1, arg2 ); // => 'testa', 'arg1', 'arg2'
             * });
-            * ```
+            * '''
             *
             * @method on
             * @grammar on( name, callback[, context] ) => self
@@ -817,12 +817,12 @@
 
             /**
             *  Được 文件统计信息。返回一个包含一下信息 Của  Đúng  Voi 。
-            * * `successNum` 上传成功 Của 文件数
-            * * `successNum` 上传 Trong  Của 文件数
-            * * `uploadFailNum` 上传失败 Của 文件数
-            * * `cancelNum` 被删除 Của 文件数
-            * * `invalidNum` 无效 Của 文件数
-            * * `queueNum` 还 Trong 队列 Trong  Của 文件数
+            * * 'successNum' 上传成功 Của 文件数
+            * * 'successNum' 上传 Trong  Của 文件数
+            * * 'uploadFailNum' 上传失败 Của 文件数
+            * * 'cancelNum' 被删除 Của 文件数
+            * * 'invalidNum' 无效 Của 文件数
+            * * 'queueNum' 还 Trong 队列 Trong  Của 文件数
             * @method getStats
             * @grammar getStats() => Object
             */
@@ -1254,7 +1254,7 @@
             },
 
             /**
-            * 发送命令。当传入`callback` Hoặc `handler` Trong 返回`promise`时。返回一个当所有`handler` Trong  Của promise都完成后完成 Của 新`promise`。
+            * 发送命令。当传入'callback' Hoặc 'handler' Trong 返回'promise'时。返回一个当所有'handler' Trong  Của promise都完成后完成 Của 新'promise'。
             * @method request
             * @grammar request( command, args ) => * | Promise
             * @grammar request( command, args, callback ) => Promise
@@ -1482,7 +1482,7 @@
         var $ = Base.$;
 
         /**
-        * @property {Selector} [paste=undefined]  指定监听paste事件 Của 容器， Trong trường hợp 不指定，不启用此 Hàm số 。此 Hàm số  Vì 通过粘贴来添加截屏 Của 图片。建议 Thiết lập  Vì `document.body`.
+        * @property {Selector} [paste=undefined]  指定监听paste事件 Của 容器， Trong trường hợp 不指定，不启用此 Hàm số 。此 Hàm số  Vì 通过粘贴来添加截屏 Của 图片。建议 Thiết lập  Vì 'document.body'.
         * @namespace options
         * @for Uploader
         */
@@ -1754,10 +1754,10 @@
             * @for Uploader
             * @description 指定选择文件 Của 按钮容器，不指定则不创建按钮。
             *
-            * * `id` {Seletor} 指定选择文件 Của 按钮容器，不指定则不创建按钮。
-            * * `label` {String} 请采用 `innerHTML` 代替
-            * * `innerHTML` {String} 指定按钮文字。不指定时优先从指定 Của 容器 Trong 看是否自带文字。
-            * * `multiple` {Boolean} 是否开起同时选择多个文件能力。
+            * * 'id' {Seletor} 指定选择文件 Của 按钮容器，不指定则不创建按钮。
+            * * 'label' {String} 请采用 'innerHTML' 代替
+            * * 'innerHTML' {String} 指定按钮文字。不指定时优先从指定 Của 容器 Trong 看是否自带文字。
+            * * 'multiple' {Boolean} 是否开起同时选择多个文件能力。
             */
             pick: null,
 
@@ -1767,19 +1767,19 @@
             * @for Uploader
             * @description 指定接受哪些 Danh mục 型 Của 文件。 由于目前还有ext转mimeType表，所以这里需要分开指定。
             *
-            * * `title` {String} 文字描述
-            * * `extensions` {String} 允许 Của 文件后缀，不带点，多个用逗号分割。
-            * * `mimeTypes` {String} 多个用逗号分割。
+            * * 'title' {String} 文字描述
+            * * 'extensions' {String} 允许 Của 文件后缀，不带点，多个用逗号分割。
+            * * 'mimeTypes' {String} 多个用逗号分割。
             *
             *  Như ：
             *
-            * ```
+            * '''
             * {
             *     title: 'Images',
             *     extensions: 'gif,jpg,jpeg,bmp,png',
             *     mimeTypes: 'image/*'
             * }
-            * ```
+            * '''
             */
             accept: null/*{
                 title: 'Images',
@@ -1967,7 +1967,7 @@
         $.extend(WUFile.prototype, {
 
             /**
-            *  Thiết lập 状态，状态变化时会触发`change`事件。
+            *  Thiết lập 状态，状态变化时会触发'change'事件。
             * @method setStatus
             * @grammar setStatus( status[, statusText] );
             * @param {File.Status|String} status [文件状态值](#WebUploader:File:File.Status)
@@ -2031,14 +2031,14 @@
 
         /**
         * 文件状态值，具体包括以下几种 Danh mục 型：
-        * * `inited` 初始状态
-        * * `queued` 已经进入队列, 等待上传
-        * * `progress` 上传 Trong 
-        * * `complete` 上传完成。
-        * * `error` 上传出错，可重试
-        * * `interrupt` 上传 Trong 断，可续传。
-        * * `invalid` 文件不合格，不能重试上传。会自动从队列 Trong 移除。
-        * * `cancelled` 文件被移除。
+        * * 'inited' 初始状态
+        * * 'queued' 已经进入队列, 等待上传
+        * * 'progress' 上传 Trong 
+        * * 'complete' 上传完成。
+        * * 'error' 上传出错，可重试
+        * * 'interrupt' 上传 Trong 断，可续传。
+        * * 'invalid' 文件不合格，不能重试上传。会自动从队列 Trong 移除。
+        * * 'cancelled' 文件被移除。
         * @property {Object} Status
         * @namespace File
         * @class File
@@ -2079,12 +2079,12 @@
 
             /**
             * 统计文件数。
-            * * `numOfQueue` 队列 Trong  Của 文件数。
-            * * `numOfSuccess` 上传成功 Của 文件数
-            * * `numOfCancel` 被移除 Của 文件数
-            * * `numOfProgress` 正 Trong 上传 Trong  Của 文件数
-            * * `numOfUploadFailed` 上传错误 Của 文件数。
-            * * `numOfInvalid` 无效 Của 文件数。
+            * * 'numOfQueue' 队列 Trong  Của 文件数。
+            * * 'numOfSuccess' 上传成功 Của 文件数
+            * * 'numOfCancel' 被移除 Của 文件数
+            * * 'numOfProgress' 正 Trong 上传 Trong  Của 文件数
+            * * 'numOfUploadFailed' 上传错误 Của 文件数。
+            * * 'numOfInvalid' 无效 Của 文件数。
             * @property {Object} stats
             */
             this.stats = {
@@ -2384,7 +2384,7 @@
             /**
             * @event beforeFileQueued
             * @param {File} file File Đúng  Voi 
-            * @description 当文件被加入队列之前触发，此事件 Của handler返回值 Vì `false`，则此文件不会被添加进入队列。
+            * @description 当文件被加入队列之前触发，此事件 Của handler返回值 Vì 'false'，则此文件不会被添加进入队列。
             * @for  Uploader
             */
 
@@ -2400,7 +2400,7 @@
 
                 file = me._wrapFile(file);
 
-                // 不过 Danh mục 型判断允许不允许，先派送 `beforeFileQueued`
+                // 不过 Danh mục 型判断允许不允许，先派送 'beforeFileQueued'
                 if (!me.owner.trigger('beforeFileQueued', file)) {
                     return;
                 }
@@ -2596,7 +2596,7 @@
             },
 
             /**
-            * 预测Uploader将采用哪个`Runtime`
+            * 预测Uploader将采用哪个'Runtime'
             * @grammar predictRuntmeType() => String
             * @method predictRuntmeType
             * @for  Uploader
@@ -2832,14 +2832,14 @@
             * @property {Object} [method='POST']
             * @namespace options
             * @for Uploader
-            * @description 文件上传方式，`POST` Hoặc `GET`。
+            * @description 文件上传方式，'POST' Hoặc 'GET'。
             */
 
             /**
             * @property {Object} [sendAsBinary=false]
             * @namespace options
             * @for Uploader
-            * @description 是否已二进制 Của 流 Của 方式发送文件，这样整个上传内容`php://input`都 Vì 文件内容，
+            * @description 是否已二进制 Của 流 Của 方式发送文件，这样整个上传内容'php://input'都 Vì 文件内容，
             * 其他参数 Trong $_GET数组 Trong 。
             */
         });
@@ -2991,7 +2991,7 @@
             },
 
             /**
-            * 判断`Uplaode`r是否正 Trong 上传 Trong 。
+            * 判断'Uplaode'r是否正 Trong 上传 Trong 。
             * @grammar isInProgress() => Boolean
             * @method isInProgress
             * @for  Uploader
@@ -3223,7 +3223,7 @@
             * @event uploadAccept
             * @param {Object} object
             * @param {Object} ret 服务端 Của 返回数据，json格式， Trong trường hợp 服务端不是json格式，从ret._raw Trong 取数据，自行解析。
-            * @description 当某个文件上传到服务端响 Nên 后，会派送此事件来询问服务端响 Nên 是否有效。 Trong trường hợp 此事件handler返回值 Vì `false`, 则此文件将派送`server` Danh mục 型 Của `uploadError`事件。
+            * @description 当某个文件上传到服务端响 Nên 后，会派送此事件来询问服务端响 Nên 是否有效。 Trong trường hợp 此事件handler返回值 Vì 'false', 则此文件将派送'server' Danh mục 型 Của 'uploadError'事件。
             * @for  Uploader
             */
 
@@ -3429,10 +3429,10 @@
         /**
         * @event error
         * @param {String} type 错误 Danh mục 型。
-        * @description 当validate不通过时，会以派送错误事件 Của 形式通知调用者。通过`upload.on('error', handler)`可以捕获到此 Danh mục 错误，目前有以下错误会 Trong 特定 Của 情况下派送错来。
+        * @description 当validate不通过时，会以派送错误事件 Của 形式通知调用者。通过'upload.on('error', handler)'可以捕获到此 Danh mục 错误，目前有以下错误会 Trong 特定 Của 情况下派送错来。
         *
-        * * `Q_EXCEED_NUM_LIMIT`  Trong  Thiết lập 了`fileNumLimit`且尝试给`uploader`添加 Của 文件数量超出这个值时派送。
-        * * `Q_EXCEED_SIZE_LIMIT`  Trong  Thiết lập 了`Q_EXCEED_SIZE_LIMIT`且尝试给`uploader`添加 Của 文件总大小超出这个值时派送。
+        * * 'Q_EXCEED_NUM_LIMIT'  Trong  Thiết lập 了'fileNumLimit'且尝试给'uploader'添加 Của 文件数量超出这个值时派送。
+        * * 'Q_EXCEED_SIZE_LIMIT'  Trong  Thiết lập 了'Q_EXCEED_SIZE_LIMIT'且尝试给'uploader'添加 Của 文件总大小超出这个值时派送。
         * @for  Uploader
         */
 

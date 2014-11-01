@@ -1,7 +1,7 @@
 ﻿
 var bcrypt = require('bcrypt-nodejs');
 var moment = require('moment');
-moment.locale('zh-cn'); //  Sử dụng Trung Quốc 
+moment.locale('zh-cn'); //  Sử dụng Việt 
 
 //  Thời gian định dạng 
 exports.formatDate = function (date, friendly) {

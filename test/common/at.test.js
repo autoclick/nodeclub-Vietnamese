@@ -39,29 +39,29 @@ describe('test/common/at.test.js', function () {
     @alsotang2
 
 
-    ```
-    呵呵 ```
+    '''
+    呵呵 '''
     @alsotang3
-    ```
+    '''
 
-    ```@alsotang4```
+    '''@alsotang4'''
 
     @
     @@
 
-    `@code_begin_with_no_space`
-    code: `@in_code`
+    '@code_begin_with_no_space'
+    code: '@in_code'
 
         @in_pre
 
-    ```
+    '''
     @in_oneline_pre
-    ```
+    '''
 
-    ```
+    '''
       Some Code
       Code @in_multi_line_pre
-    ```
+    '''
 
     [@be_link](/user/be_link) [@be_link2](/user/be_link2)
   */});
@@ -82,29 +82,29 @@ jysperm@gmail.com [@alsotang](/user/alsotang)
 [@alsotang2](/user/alsotang2)
 
 
-```
-呵呵 ```
+'''
+呵呵 '''
 @alsotang3
-```
+'''
 
-```@alsotang4```
+'''@alsotang4'''
 
 @
 @@
 
-`@code_begin_with_no_space`
-code: `@in_code`
+'@code_begin_with_no_space'
+code: '@in_code'
 
     @in_pre
 
-```
+'''
 @in_oneline_pre
-```
+'''
 
-```
+'''
   Some Code
   Code @in_multi_line_pre
-```
+'''
 
 [@be_link](/user/be_link) [@be_link2](/user/be_link2)
   */});

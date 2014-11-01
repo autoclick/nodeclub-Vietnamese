@@ -15,7 +15,7 @@ var config = require('../../config');
 describe('test/controllers/rss.test.js', function () {
 
   describe('/rss', function () {
-    it('should return `application/xml` Content-Type', function (done) {
+    it('should return 'application/xml' Content-Type', function (done) {
       request(app).get('/rss').end(function (err, res) {
         res.status.should.equal(200);
         res.headers.should.property('content-type', 'application/xml; charset=utf-8');
@@ -26,7 +26,7 @@ describe('test/controllers/rss.test.js', function () {
       });
     });
 
-    describe('mock `config.rss` not set', function () {
+    describe('mock 'config.rss' not set', function () {
       var rss = config.rss;
       before(function () {
         config.rss = null;
@@ -38,13 +38,13 @@ describe('test/controllers/rss.test.js', function () {
       it('should return waring message', function (done) {
         request(app).get('/rss').end(function (err, res) {
           res.status.should.equal(404);
-          res.text.should.equal('Please set `rss` in config.js');
+          res.text.should.equal('Please set 'rss' in config.js');
           done(err);
         });
       });
     });
 
-    describe('mock `topic.getTopicsByQuery()` error', function () {
+    describe('mock 'topic.getTopicsByQuery()' error', function () {
       var topic = require('../../proxy').Topic;
       var getTopicsByQuery = topic.getTopicsByQuery;
       before(function () {

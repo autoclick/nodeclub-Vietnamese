@@ -151,7 +151,7 @@
           };
         }
 
-        // Only pass url to `ajax` options if not blank
+        // Only pass url to 'ajax' options if not blank
         if (url) {
           options.url = url;
         }
@@ -202,7 +202,7 @@
     },
 
     /* Re-enables disabled form elements:
-     - Replaces element text with cached value from 'ujs:enable-with' data store (created in `disableFormElements`)
+     - Replaces element text with cached value from 'ujs:enable-with' data store (created in 'disableFormElements')
      - Sets disabled property to false
      */
     enableFormElements: function (form) {
@@ -214,14 +214,14 @@
     },
 
     /* For 'data-confirm' attribute:
-     - Fires `confirm` event
+     - Fires 'confirm' event
      - Shows the confirmation dialog
-     - Fires the `confirm:complete` event
+     - Fires the 'confirm:complete' event
 
-     Returns `true` if no function stops the chain and user chose yes; `false` otherwise.
-     Attaching a handler to the element's `confirm` event that returns a `falsy` value cancels the confirmation dialog.
-     Attaching a handler to the element's `confirm:complete` event that returns a `falsy` value makes this function
-     return false. The `confirm:complete` event is fired whether or not the user answered true or false to the dialog.
+     Returns 'true' if no function stops the chain and user chose yes; 'false' otherwise.
+     Attaching a handler to the element's 'confirm' event that returns a 'falsy' value cancels the confirmation dialog.
+     Attaching a handler to the element's 'confirm:complete' event that returns a 'falsy' value makes this function
+     return false. The 'confirm:complete' event is fired whether or not the user answered true or false to the dialog.
      */
     allowAction: function (element) {
       var message = element.data('confirm'),

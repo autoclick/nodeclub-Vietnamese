@@ -193,7 +193,7 @@
   * change to async
   * change to async
   * Update README.md
-  * 修复`abc+label@gmail.com`格式的注册邮箱不能成功激活的问题
+  * 修复'abc+label@gmail.com'格式的注册邮箱不能成功激活的问题
   * commit
   * project init
   * first commit

@@ -13,9 +13,9 @@ describe('test/common/render_helpers.test.js', function () {
     it('should render code', function () {
       var text = multiline(function () {;
     /*
-```js
+'''js
 var a = 1;
-```
+'''
     */
       });
 

@@ -21,9 +21,9 @@ var _ = require('lodash');
  */
 var fetchUsers = function (text) {
   var ignore_regexs = [
-    /```.+?```/, //  Việc loại bỏ một hàng duy nhất  ```
-    /^```[\s\S]+?^```/gm, // ```  Bên trong  pre  Nội dung nhãn 
-    /`[\s\S]+?`/g, //  Trong cùng một hàng ，`some code`  Cũng không phải là nội dung được phân tích cú pháp 
+    /'''.+?'''/, //  Việc loại bỏ một hàng duy nhất  '''
+    /^'''[\s\S]+?^'''/gm, // '''  Bên trong  pre  Nội dung nhãn 
+    /'[\s\S]+?'/g, //  Trong cùng một hàng ，'some code'  Cũng không phải là nội dung được phân tích cú pháp 
     /^    .*/gm, // 4 Không gian cũng  pre  Nhãn ， Ở đây  .  Không phù hợp với các dòng mới 
     /\b.*?@[^\s]*?\..+?\b/g, // somebody@gmail.com  Sẽ được gỡ bỏ 
     /\[@.+?\]\(\/.+?\)/g, //  Đã được  link  Của  username

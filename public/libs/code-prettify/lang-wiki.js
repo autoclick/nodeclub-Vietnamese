@@ -5,9 +5,9 @@ PR.registerLangHandler(PR.createSimpleLexer([
   ["lang-wiki.meta", /(?:^^|\r\n?|\n)(#[a-z]+)\b/],
   ["lit", /^[A-Z][a-z][\da-z]+[A-Z][a-z][^\W_]+\b/],
   ["lang-", /^{{{([\S\s]+?)}}}/],
-  ["lang-", /^`([^\n\r`]+)`/],
+  ["lang-", /^'([^\n\r']+)'/],
   ["str", /^https?:\/\/[^\s#/?]*(?:\/[^\s#?]*)?(?:\?[^\s#]*)?(?:#\S*)?/i],
-  ["pln", /^(?:\r\n|[\S\s])[^\n\r#*=A-[^`h{~]*/]
+  ["pln", /^(?:\r\n|[\S\s])[^\n\r#*=A-[^'h{~]*/]
 ]), ["wiki"]);
 PR.registerLangHandler(PR.createSimpleLexer([
   ["kwd", /^#[a-z]+/i, null, "#"]

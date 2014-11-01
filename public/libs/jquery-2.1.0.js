@@ -668,7 +668,7 @@
             "*(\\d+)|))" + whitespace + "*\\)|)", "i"),
           "bool": new RegExp("^(?:" + booleans + ")$", "i"),
           // For use in libraries implementing .is()
-          // We use this for POS matching in `select`
+          // We use this for POS matching in 'select'
           "needsContext": new RegExp("^" + whitespace + "*[>+~]|:(even|odd|eq|gt|lt|nth|first|last)(?:\\(" +
             whitespace + "*((?:-\\d)?\\d*)" + whitespace + "*\\)|)(?=[^-]|$)", "i")
         },
@@ -1153,7 +1153,7 @@
 
         // qSa(:focus) reports false when true (Chrome 21)
         // We allow this because of a bug in IE8/9 that throws an error
-        // whenever `document.activeElement` is accessed on an iframe
+        // whenever 'document.activeElement' is accessed on an iframe
         // So, we allow :focus to pass through QSA all the time to avoid the IE error
         // See http://bugs.jquery.com/ticket/13378
         rbuggyQSA = [];
@@ -1680,9 +1680,9 @@
 
                   start = [ forward ? parent.firstChild : parent.lastChild ];
 
-                  // non-xml :nth-child(...) stores cache data on `parent`
+                  // non-xml :nth-child(...) stores cache data on 'parent'
                   if (forward && useCache) {
-                    // Seek `elem` from a previously-cached index
+                    // Seek 'elem' from a previously-cached index
                     outerCache = parent[ expando ] || (parent[ expando ] = {});
                     cache = outerCache[ type ] || [];
                     nodeIndex = cache[0] === dirruns && cache[1];
@@ -1691,10 +1691,10 @@
 
                     while ((node = ++nodeIndex && node && node[ dir ] ||
 
-                      // Fallback to seeking `elem` from the start
+                      // Fallback to seeking 'elem' from the start
                       (diff = nodeIndex = 0) || start.pop())) {
 
-                      // When found, cache indexes on `parent` and break
+                      // When found, cache indexes on 'parent' and break
                       if (node.nodeType === 1 && ++diff && node === elem) {
                         outerCache[ type ] = [ dirruns, nodeIndex, diff ];
                         break;
@@ -1707,7 +1707,7 @@
 
                     // xml :nth-child(...) or :nth-last-child(...) or :nth(-last)?-of-type(...)
                   } else {
-                    // Use the same loop as above to seek `elem` from the start
+                    // Use the same loop as above to seek 'elem' from the start
                     while ((node = ++nodeIndex && node && node[ dir ] ||
                       (diff = nodeIndex = 0) || start.pop())) {
 
@@ -1785,7 +1785,7 @@
                   unmatched = matcher(seed, null, xml, []),
                   i = seed.length;
 
-                // Match elements unmatched by `matcher`
+                // Match elements unmatched by 'matcher'
                 while (i--) {
                   if ((elem = unmatched[i])) {
                     seed[i] = !(matches[i] = elem);
@@ -2282,7 +2282,7 @@
               return setMatcher(
                   i > 1 && elementMatcher(matchers),
                   i > 1 && toSelector(
-                  // If the preceding token was a descendant combinator, insert an implicit any-element `*`
+                  // If the preceding token was a descendant combinator, insert an implicit any-element '*'
                   tokens.slice(0, i - 1).concat({ value: tokens[ i - 2 ].type === " " ? "*" : "" })
                 ).replace(rtrim, "$1"),
                 matcher,
@@ -2319,7 +2319,7 @@
             }
 
             // Add elements passing elementMatchers directly to results
-            // Keep `i` a string if there are no elements so `matchedCount` will be "00" below
+            // Keep 'i' a string if there are no elements so 'matchedCount' will be "00" below
             // Support: IE<9, Safari
             // Tolerate NodeList properties (IE: "length"; Safari: <number>) matching elements by id
             for (; i !== len && (elem = elems[i]) != null; i++) {
@@ -2486,7 +2486,7 @@
         }
 
         // Compile and execute a filtering function
-        // Provide `match` to avoid retokenization if we modified the selector above
+        // Provide 'match' to avoid retokenization if we modified the selector above
         compile(selector, match)(
           seed,
           context,
@@ -3767,8 +3767,8 @@
 
         // The calling jQuery object (element matches) is not empty
         // (and therefore has an element appears at this[ 0 ]) and the
-        // `value` parameter was not undefined. An empty jQuery object
-        // will result in `undefined` for elem = this[ 0 ] which will
+        // 'value' parameter was not undefined. An empty jQuery object
+        // will result in 'undefined' for elem = this[ 0 ] which will
         // throw an exception if an attempt to read a data cache is made.
         if (elem && value === undefined) {
           // Attempt to get data from the cache
@@ -5121,12 +5121,12 @@
               }
             }
             if (data_priv.cache[ key ]) {
-              // Discard any remaining `private` data
+              // Discard any remaining 'private' data
               delete data_priv.cache[ key ];
             }
           }
         }
-        // Discard any remaining `user` data
+        // Discard any remaining 'user' data
         delete data_user.cache[ elem[ data_user.expando ] ];
       }
     }
