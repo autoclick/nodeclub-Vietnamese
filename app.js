@@ -40,7 +40,7 @@ if (config.mini_assets) {
   try {
     assets = require('./assets.json');
   } catch (e) {
-    console.log('You must execute 'make build' before start app when mini_assets is true.');
+    console.log('You must execute \'make build\' before start app when mini_assets is true.');
     throw e;
   }
 }
