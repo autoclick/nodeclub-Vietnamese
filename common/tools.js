@@ -20,7 +20,7 @@ exports.validateId = function (str) {
 };
 
 exports.bhash = function (str, callback) {
-  bcrypt.hash(str, 10, callback);
+  bcrypt.hash(str, null,null, callback);
 };
 
 exports.bcompare = function (str, hash, callback) {
