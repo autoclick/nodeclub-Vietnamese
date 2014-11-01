@@ -1,0 +1,20 @@
+﻿<%- partial('../sidebar') %>
+
+<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'> Nhà </a><span class='divider'>/</span></li>
+        <li class='active'><%= user.loginname %>  Chủ đề yêu thích </li>
+      </ul>
+    </div>
+    <div class='inner no-padding'>
+      <% if (topics.length > 0) { %>
+      <%- partial('../topic/list', { topics: topics, pages: pages, current_pages: current_page, base: '/user/' +
+      user.loginname + '/collections' }) %>
+      <% } else { %>
+      <p> Không thể tìm thấy chủ đề  (T_T)</p>
+      <% } %>
+    </div>
+  </div>
+</div>

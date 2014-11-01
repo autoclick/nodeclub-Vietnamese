@@ -1,0 +1,474 @@
+﻿<div id='sidebar'>
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'> Tác giả </span>
+    </div>
+    <div class='inner'>
+      <%- partial('../user/card', { object: topic.author, as: 'user' }) %>
+    </div>
+  </div>
+
+  <% if (typeof(current_user) === 'undefined' || !current_user.isAdvanced) { %>
+    <%- partial('../_ads') %>
+  <% } %>
+
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'> Tác giả  Chủ đề khác </span>
+    </div>
+    <div class='inner'>
+      <% if (typeof(author_other_topics) === 'undefined' || author_other_topics.length > 0) { %>
+      <ul class='unstyled'>
+        <%- partial('../topic/small', { collection: author_other_topics, as: 'topic' }) %>
+      </ul>
+      <% } else { %>
+      <p> Không </p>
+      <% } %>
+    </div>
+  </div>
+
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'> Không  Trả lời chủ đề của con người </span>
+    </div>
+    <div class='inner'>
+      <% if (typeof(no_reply_topics) !== 'undefined' && no_reply_topics.length > 0) { %>
+      <ul class='unstyled'>
+        <%- partial('../topic/small', { collection: no_reply_topics, as: 'topic' }) %>
+      </ul>
+      <% } else { %>
+      <p> Không </p>
+      <% } %>
+    </div>
+  </div>
+</div>
+
+<div id='content'>
+  <div class='panel'>
+    <div class='header topic_header'>
+      <span class="topic_full_title">
+
+        <%- partial('./_top_good', {topic: topic}) %>
+
+        <%= topic.title %>
+      </span>
+
+      <div class="changes">
+        <span>
+           Đăng trên  <%= topic.friendly_create_at %>
+        </span>
+        <span>
+           Tác giả  <a href="/user/<%= topic.author.loginname %>"><%= topic.author.loginname %></a>
+        </span>
+        <span>
+          <%= topic.visit_count %>  Lần đọc 
+        </span>
+        <% if (topic.friendly_create_at != topic.friendly_update_at) { %>
+          <span>
+             Lần sửa cuối là  <%= topic.friendly_update_at %>
+          </span>
+        <% } %>
+        <% if (topic.tab) { %>
+          <span>  Đến từ  <%= topic.tabName %></span>
+        <%}%>
+      </div>
+      <% if (typeof(current_user) !== 'undefined') { %>
+      <div id="manage_topic">
+        <% if (current_user.is_admin) { %>
+
+        <% if (topic.top) { %>
+        <a href='/topic/<%= topic._id %>/top/0' data-method="post">
+          <img class='user_icon'
+               src='<%- staticFile("/public/images/star_fav_icon&16.png") %>'
+               title=' Lột '/>
+        </a>
+        <% } else { %>
+        <a href='/topic/<%= topic._id %>/top/1' data-method="post">
+          <img class='user_icon'
+               src='<%- staticFile("/public/images/star_fav_empty_icon&16.png") %>'
+               title=' Dính '/>
+        </a>
+        <% } %>
+
+        <% if (topic.good) { %>
+        <a href='/topic/<%= topic._id %>/good/0' data-method="post">
+           Hủy bỏ kem 
+        </a>
+        <% } else { %>
+        <a href='/topic/<%= topic._id %>/good/1' data-method="post">
+           Làm kem 
+        </a>
+        <% } %>
+
+        <a href='/topic/<%= topic._id %>/edit'>
+          <img
+                  class='user_icon'
+                  src='<%- staticFile("/public/images/doc_edit_icon&16.png") %>'
+                  title=' Biên tập viên '/></a>
+        <a href='javascript:;'
+           data-id="<%= topic._id %>"
+           class='delete_topic_btn'><img class='user_icon'
+                                         src='<%- staticFile("/public/images/trash_icon&16.png") %>'
+                                         title=' Xóa bỏ '/></a>
+        <% } else { %>
+        <% if (current_user._id.equals(topic.author_id)) { %>
+        <a href='/topic/<%= topic._id %>/edit'>
+          <img class='user_icon'
+               src='<%- staticFile("/public/images/doc_edit_icon&16.png") %>'
+               title=' Biên tập viên '/></a>
+        <a href='javascript:;'
+           data-id="<%= topic._id %>"
+           class='delete_topic_btn'><img class='user_icon'
+           src='<%- staticFile("/public/images/trash_icon&16.png") %>'
+           title=' Xóa bỏ '/></a>
+        <% } %>
+        <% } %>
+      </div>
+      <% } %>
+    </div>
+    <div class='inner topic'>
+
+      <div class='topic_content'>
+        <%- markdown(topic.content) %>
+      </div>
+
+      <div class="action">
+        <span class='span-success' id='share_weibo_btn'
+              onclick="((function(s,d,e,r,l,p,t,z,c){var f='http://v.t.sina.com.cn/share/share.php?appkey=<%= config.weibo_key %>',u=z||d.location,p=['&url=',e(u),'&title=',e(t||d.title),'&source=',e(r),'&sourceUrl=',e(l),'&content=',c||'gb2312','&pic=',e(p||'')].join('');function a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else a();})(screen,document,encodeURIComponent,'','','','@<%= config.weibo_id %>  Chia sẻ  Đến từ <%= config.name %> Chủ đề ：<%= topic.title %>','',''));"
+                > Chia sẻ  Twitter </span>
+        <% if (typeof(current_user) !== 'undefined') { %>
+        <% if (!topic.in_collection) { %>
+        <span class='span-common span-success' id='collect_btn' action='collect'> Thêm vào yêu thích </span>
+        <% } else { %>
+        <span class='span-common span-success' id='collect_btn' action='de_collect'> Hủy đăng ký </span>
+        <% } %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <% if (topic.replies && topic.replies.length > 0) { %>
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'><%= topic.replies.length %>  Đáp lại </span>
+    </div>
+    <%- partial('../reply/reply', topic.replies) %>
+  </div>
+  <% } %>
+  <% if (typeof(current_user) !== 'undefined' && typeof(topic) !== 'undefined') { %>
+  <div class='panel'>
+    <div class='header'>
+      <span class='col_fade'> Thêm vào  Đáp lại </span>
+    </div>
+    <div class='inner reply'>
+      <form id='reply_form' action='/<%= topic._id %>/reply' method='post'>
+
+        <div class='markdown_editor in_editor'>
+          <div class='markdown_in_editor'>
+            <textarea class='editor' name='r_content' rows='8'></textarea>
+
+            <div class='editor_buttons'>
+              <input class='span-primary submit_btn' type="submit" data-loading-text=" Đáp lại  Trong .." value=" Đáp lại ">
+            </div>
+          </div>
+
+        </div>
+
+        <input type='hidden' name='_csrf' id="_csrf" value='<%= csrf %>'/>
+      </form>
+    </div>
+  </div>
+  <% } %>
+</div>
+
+<div class="replies_history">
+  <div class="inner_content"></div>
+  <div class="anchor"></div>
+</div>
+
+
+<% if (typeof(current_user) !== 'undefined' && typeof(topic) !== 'undefined') { %>
+<!-- markdown editor -->
+<%- Loader('/public/editor.min.js')
+.js('/public/libs/marked.js')
+.js('/public/libs/editor/editor.js')
+.js('/public/libs/webuploader/webuploader.withoutimage.js')
+.js('/public/libs/editor/ext.js')
+.done(assets, config.site_static_host, config.mini_assets)
+%>
+<script>
+  $(document).ready(function () {
+    //  Nhận tất cả  Đáp lại  Người name
+    var allNames = $('.reply_author').map(function (idx, ele) {
+      return $(ele).text().trim();
+    }).toArray();
+    allNames = _.uniq(allNames);
+    // END  Nhận tất cả  Đáp lại  Người name
+
+    //  Biên tập viên  LIÊN QUAN 
+    $('textarea.editor').each(function(){
+      var editor = new Editor({
+        status: []
+      });
+      var $el = $(this);
+
+      editor.render(this);
+      // Bắt buộc editor
+      $(this).data('editor', editor);
+
+      var $input = $(editor.codemirror.display.input);
+      $input.keydown(function(event){
+        if (event.keyCode === 13 && (event.ctrlKey || event.metaKey)) {
+          event.preventDefault();
+          $el.closest('form').submit();
+        }
+      });
+
+      // at.js  Cấu hình 
+      var codeMirrorGoLineUp = CodeMirror.commands.goLineUp;
+      var codeMirrorGoLineDown = CodeMirror.commands.goLineDown;
+      var codeMirrorNewlineAndIndent = CodeMirror.commands.newlineAndIndent;
+      $input.atwho({
+        at: '@',
+        data: allNames
+      })
+      .on('shown.atwho', function () {
+        CodeMirror.commands.goLineUp = _.noop;
+        CodeMirror.commands.goLineDown = _.noop;
+        CodeMirror.commands.newlineAndIndent = _.noop;
+      })
+      .on('hidden.atwho', function () {
+        CodeMirror.commands.goLineUp = codeMirrorGoLineUp;
+        CodeMirror.commands.goLineDown = codeMirrorGoLineDown;
+        CodeMirror.commands.newlineAndIndent = codeMirrorNewlineAndIndent;
+      });
+      // END at.js  Cấu hình 
+
+    });
+    // END  Biên tập viên  LIÊN QUAN 
+
+    //  Chú thích  Đáp lại 
+    $('#content').on('click', '.reply2_btn', function (event) {
+      var $btn = $(event.currentTarget);
+      var parent = $btn.closest('.reply_area');
+      var editorWrap = parent.find('.reply2_form');
+      parent.find('.reply2_area').prepend(editorWrap);
+      var textarea = editorWrap.find('textarea.editor');
+      var user = $btn.closest('.author_content').find('.reply_author').text().trim();
+      var editor = textarea.data('editor');
+      editorWrap.show('fast', function () {
+        var cm = editor.codemirror;
+        cm.focus();
+        if(cm.getValue().indexOf('@' + user) < 0){
+          editor.push('@' + user + ' ');
+        }
+      });
+    });
+
+    $('#content').on('click', '.reply2_at_btn', function (event) {
+      var $btn = $(event.currentTarget);
+      var editorWrap = $btn.closest('.reply2_area').find('.reply2_form');
+      $btn.closest('.reply2_item').after(editorWrap);
+      var textarea = editorWrap.find('textarea.editor');
+      var user = $btn.closest('.reply2_item').find('.reply_author').text().trim();
+      var editor = textarea.data('editor');
+      editorWrap.show('fast', function () {
+        var cm = editor.codemirror;
+        cm.focus();
+        if(cm.getValue().indexOf('@' + user) < 0){
+          editor.push('@' + user + ' ');
+        }
+      });
+    });
+    // END  Chú thích  Đáp lại 
+
+    //  Thêm vào yêu thích 
+    $('#collect_btn').click(function () {
+      var $me = $(this);
+      var action = $me.attr('action');
+      var data = {
+        topic_id: '<%= topic._id %>',
+        _csrf: '<%= csrf %>'
+      };
+      var $countSpan = $('.collect-topic-count');
+      $.post('/topic/' + action, data, function (data) {
+        if (data.status === 'success') {
+          if (action == 'collect') {
+            $me.text(' Hủy đăng ký ');
+            $me.attr('action', 'de_collect');
+          } else {
+            $me.text(' Thêm vào yêu thích ');
+            $me.attr('action', 'collect');
+          }
+          $me.toggleClass('span-success');
+        }
+      }, 'json');
+    });
+    // END  Thêm vào yêu thích 
+
+    //  Xóa bỏ  Đáp lại 
+    $('#content').on('click', '.delete_reply_btn, .delete_reply2_btn', function (event) {
+      var $me = $(event.currentTarget);
+      if (confirm(' Bạn có chắc muốn  Xóa bỏ  Điều này  Đáp lại  Nó ？')) {
+        var reply_id = null;
+        if ($me.hasClass('delete_reply_btn')) {
+          reply_id = $me.closest('.reply_item').attr('reply_id');
+        }
+        if ($me.hasClass('delete_reply2_btn')) {
+          reply_id = $me.closest('.reply2_item').attr('reply_id');
+        }
+        var data = {
+          reply_id: reply_id,
+          _csrf: "<%- csrf %>"
+        };
+        $.post('/reply/' + reply_id + '/delete', data, function (data) {
+          if (data.status === 'success') {
+            if ($me.hasClass('delete_reply_btn')) {
+              $me.closest('.reply_item').remove();
+            }
+            if ($me.hasClass('delete_reply2_btn')) {
+              $me.closest('.reply2_item').remove();
+            }
+          }
+        }, 'json');
+      }
+      return false;
+    });
+    // END  Xóa bỏ  Đáp lại 
+
+    //  Xóa bỏ  Chủ đề 
+    $('.delete_topic_btn').click(function () {
+      var topicId = $(this).data('id');
+      if (topicId && confirm(' Bạn có chắc muốn  Xóa bỏ  Điều này  Chủ đề  Nó ？')) {
+        $.post('/topic/' + topicId + '/delete', { _csrf: $('#_csrf').val() }, function (result) {
+          if (!result.success) {
+            alert(result.message);
+          } else {
+            location.href = '/';
+          }
+        });
+      }
+      return false;
+    });
+    // END  Xóa bỏ  Chủ đề 
+
+    //  Người sử dụng  hover  Trong  Đáp lại  Hộp chỉ điểm hiển thị nút Like 
+    $('.reply_area').hover(
+      function () {
+        $(this).find('.up_btn').removeClass('invisible');
+      },
+      function () {
+        var $this = $(this);
+        if ($this.find('.up-count').text().trim() === '') {
+          $this.find('.up_btn').addClass('invisible');
+        }
+      });
+    // END  Người sử dụng  hover  Trong  Đáp lại  Hộp chỉ điểm hiển thị nút Like 
+
+
+  });
+
+</script>
+<% } %>
+
+<script type="text/javascript">
+  (function(){
+    var timer = null; // Bộ đếm thời gian chậm trễ thoại 
+    //  Khởi tạo  $('.replies_history')
+    var $repliesHistory = $('.replies_history');
+    var $repliesHistoryContent = $repliesHistory.find('.inner_content');
+    $repliesHistory.hide();
+    // END
+    //  Chuột vào hộp thoại xóa Hide giờ ； Hide thoại loại bỏ 
+    $repliesHistory.on('mouseenter', function(){
+      clearTimeout(timer);
+    }).on('mouseleave', function(){
+      $repliesHistory.fadeOut('fast');
+    });
+    //  Hiển thị  at  Người sử dụng  Trang này  Chú thích 
+    if ($('.reply2_item').length === 0) {
+      //  Chỉ  Trong  Trực tuyến  Chú thích  Giao diện  Trong  Dùng 
+
+      $('#content').on('mouseenter', '.reply_content a', function (e) {
+        clearTimeout(timer);
+        var $this = $(this);
+        if ($this.text()[0] === '@') {
+          var thisText = $this.text().trim();
+          var loginname = thisText.slice(1);
+          var offset = $this.offset();
+          var width = $this.width();
+          var mainOffset = $('#main').offset();
+          $repliesHistory.css('left', offset.left-mainOffset.left+width+10); // magic number
+          $repliesHistory.css('top', offset.top-mainOffset.top-10); // magic number
+          $repliesHistory.css({
+            'z-index': 1,
+          });
+          $repliesHistoryContent.empty();
+          var chats = [];
+          var replyToId = $this.closest('.reply_item').attr('reply_to_id');
+          while (replyToId) {
+            var $replyItem = $('.reply_item[reply_id=' + replyToId + ']');
+            var replyContent = $replyItem.find('.reply_content').text().trim();
+            if (replyContent.length > 0) {
+              chats.push([
+                $replyItem.find('.user_avatar').html(), // avatar
+                (replyContent.length>300?replyContent.substr(0,300)+'...':replyContent), // reply content
+                '<a href="#'+replyToId+'" class="scroll_to_original" title=" Xem bản gốc ">↑</a>'
+              ]);
+            }
+            replyToId = $replyItem.attr('reply_to_id');
+          }
+          if(chats.length > 0) {
+            chats.reverse();
+
+            $repliesHistoryContent.append('<div class="title"> Xem cuộc trò chuyện </div>');
+            chats.forEach(function (pair, idx) {
+              var $chat = $repliesHistoryContent.append('<div class="item"></div>');
+              $chat.append(pair[0]); //  Trưởng chân dung 
+              $chat.append($('<span>').text(pair[1])); //  Nội dung 
+              $chat.append(pair[2]); //  Xem bản gốc  anchor
+            });
+            $repliesHistory.fadeIn('fast');
+          }else{
+            $repliesHistory.hide();
+          }
+        }
+      }).on('mouseleave', '.reply_content a', function (e) {
+        timer = setTimeout(function(){
+          $repliesHistory.fadeOut('fast');
+        }, 500);
+      });
+    }
+    // END  Hiển thị  at  Người sử dụng  Trang này  Chú thích 
+  })();
+
+  //  Giống như điểm 
+  $('.up_btn').click(function (e) {
+    var $this = $(this);
+    var replyId = $this.closest('.reply_area').attr('reply_id');
+    $.ajax({
+      url: '/reply/' + replyId + '/up',
+      method: 'POST',
+    }).done(function (data) {
+      if (data.success) {
+        $this.removeClass('invisible');
+        var currentCount = Number($this.next('.up-count').text().trim()) || 0;
+        if (data.action === 'up') {
+          $this.next('.up-count').text(currentCount + 1);
+          $this.addClass('uped');
+        } else {
+          if (data.action === 'down') {
+            $this.next('.up-count').text(currentCount - 1);
+            $this.removeClass('uped');
+          }
+        }
+      } else {
+        alert(data.message);
+      }
+    }).fail(function (xhr) {
+      if (xhr.status === 403) {
+        alert(' Vui lòng đăng nhập ， Sau khi hạ cánh bạn có thể  Giống như điểm 。');
+      }
+    });
+  });
+  // END  Giống như điểm 
+</script>

@@ -1,0 +1,114 @@
+﻿<%- partial('../editor_sidebar') %>
+
+<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ol class='breadcrumb'>
+        <li><a href='/'> Nhà </a><span class='divider'>/</span></li>
+        <% if(typeof(action) !== 'undefined' && action == 'edit'){ %>
+        <li class='active'> Chỉnh sửa chủ đề </li>
+        <% }else{ %>
+        <li class='active'> Chủ đề văn </li>
+        <% } %>
+      </ol>
+    </div>
+    <div class='inner post'>
+      <% if(typeof(edit_error) !== 'undefined' && edit_error){ %>
+      <div class="alert alert-error">
+        <a class="close" data-dismiss="alert" href="#">&times;</a>
+        <strong><%= edit_error %></strong>
+      </div>
+      <% } %>
+      <% if(typeof(error) !== 'undefined' && error){ %>
+      <div class="alert alert-error">
+        <strong><%= error %></strong>
+      </div>
+      <% }else{ %>
+      <% if (typeof(action) !== 'undefined' && action === 'edit') { %>
+      <form id='create_topic_form' action='/topic/<%= topic_id %>/edit' method='post'>
+        <% } else { %>
+        <form id='create_topic_form' action='/topic/create' method='post'>
+          <% } %>
+          <fieldset>
+            <span class="tab-selector"> Chọn Diễn đàn ：</span>
+            <select name="tab" id="tab-value">
+              <option value=""> Vui lòng chọn </option>
+              <%
+              var tabValue = '';
+              if (typeof(tab) !== 'undefined') {
+                tabValue = tab;
+              }
+              tabs.forEach(function (pair) {
+                var value = pair[0];
+                var text = pair[1];
+                %>
+                <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
+
+              <%});%>
+            </select>
+            <span id="topic_create_warn"></span>
+            <textarea autofocus class='span9' id='title' name='title' rows='1'
+                      placeholder=" Từ tiêu đề  10  Từ hoặc hơn "
+                    ><%= typeof(title) !== 'undefined' && title || '' %></textarea>
+
+            <div class='markdown_editor in_editor'>
+              <div class='markdown_in_editor'>
+                <textarea class='editor' name='t_content' rows='20'
+                          placeholder=' Bài viết Hỗ trợ  Markdown  Văn phạm ,  Xin lưu ý rằng mã thẻ '
+                        ><%= typeof(content) !== 'undefined' && content || '' %></textarea>
+
+                <div class='editor_buttons'>
+                  <input type="submit" class='span-primary submit_btn' data-loading-text=" Đệ trình "
+                         value=" Đệ trình ">
+                </div>
+              </div>
+
+            </div>
+
+            <input type='hidden' id='topic_tags' name='topic_tags' value=''>
+            <input type='hidden' name='_csrf' value='<%= csrf %>'>
+          </fieldset>
+        </form>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<!-- markdown editor -->
+<%- Loader('/public/editor.min.js')
+.js('/public/libs/marked.js')
+.js('/public/libs/editor/editor.js')
+.js('/public/libs/webuploader/webuploader.withoutimage.js')
+.js('/public/libs/editor/ext.js')
+.done(assets, config.site_static_host, config.mini_assets)
+%>
+<script>
+  (function () {
+    var editor = new Editor();
+    editor.render($('.editor')[0]);
+
+    //  Kiểm tra diễn đàn lựa chọn ， Phải chọn 
+    $('#create_topic_form').on('submit', function (e) {
+      var tabValue = $('#tab-value').val();
+      if (!tabValue) {
+        alert(' Phải chọn  Một diễn đàn ！');
+        $('.submit_btn').button('reset');
+        $('.tab-selector').css('color', 'red');
+        return false;
+      }
+    });
+    // END  Kiểm tra diễn đàn lựa chọn ， Phải chọn 
+
+    //  Khi lựa chọn các khu vực tuyển dụng ， Cho lời khuyên 
+    $('#tab-value').on('change', function () {
+      var $this = $(this);
+      var value = $this.val();
+      var warnMsg = '';
+      if (value === 'job') {
+        warnMsg = '<strong> Để tránh bị quản trị viên xóa bài viết ， Xin vui lòng đọc cẩn thận khi đăng <a href="http://cnodejs.org/topic/541ed2d05e28155f24676a12" target="_blank">《 Bài viết công việc đặc điểm kỹ thuật 》</a></strong>';
+      }
+      $('#topic_create_warn').html(warnMsg);
+    });
+    // END  Khi lựa chọn các khu vực tuyển dụng ， Cho lời khuyên 
+  })();
+</script>

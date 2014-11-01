@@ -1,0 +1,30 @@
+﻿<%- partial('../sidebar') %>
+
+<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'> Nhà </a><span class='divider'>/</span></li>
+        <li class='active'>Top100  Bảng xếp hạng </li>
+      </ul>
+    </div>
+    <div class='inner'>
+      <% if(typeof(users) !== 'undefined' && users.length > 0){ %>
+      <table class='table table-condensed table-striped'>
+        <thead>
+        <th>#</th>
+        <th> Tên đăng nhập </th>
+        <th> Số lượng người hâm mộ </th>
+        <th> Bài viết </th>
+        <th> Tích hợp </th>
+        </thead>
+        <tbody>
+        <%- partial('../user/top100_user',{collection:users,as:'user'}) %>
+        </tbody>
+      </table>
+      <% }else{ %>
+      <p> Tuy nhiên, người sử dụng </p>
+      <% } %>
+    </div>
+  </div>
+</div>

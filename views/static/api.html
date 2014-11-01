@@ -1,0 +1,39 @@
+﻿<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'> Nhà </a><span class='divider'>/</span></li>
+        <li class='active'>API</li>
+      </ul>
+    </div>
+    <div class='inner topic'>
+      <div class="topic_content">
+        <%- markdown(multiline(function () {
+/*
+###  Chủ đề 
+
+#### /topics  Chủ đề  Nhà 
+
+ Nhận  get  Thông số 
+
+* page Number  Trang 
+* tab String  Chủ đề  Phân loại 
+
+ Ví dụ ：[/api/v1/topics](/api/v1/topics)
+
+#### /topic/:id  Chủ đề  Chi tiết 
+
+ Ví dụ ：[/api/v1/topic/5433d5e4e737cbe96dcef312](/api/v1/topic/5433d5e4e737cbe96dcef312)
+
+###  Người sử dụng 
+
+#### /user/:loginname  Người sử dụng  Chi tiết 
+
+ Ví dụ ：[/api/v1/user/alsotang](/api/v1/user/alsotang)
+
+*/
+        })) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+﻿<div class='user'>
+  <div>
+    <a href="/user/<%= user.loginname %>">
+      <img class='user_avatar' src="<%= user.avatar_url %>" title="<%= user.loginname %>"/>
+    </a>
+    <span class='user_name'><a class='dark' href="/user/<%= user.loginname %>"><%= user.loginname %></a></span>
+
+    <div class='space'></div>
+    <span class='col_fade'><%= user.follower_count %>  Người hâm mộ  </span>
+    <span class='space'></span>
+    <span class='col_fade'><%= user.following_count %>  Chú ý  </span>
+  </div>
+  <div>
+		<span>
+			<a href='mailto:<%= user.email %>'>
+        <img class='user_icon' src="<%- staticFile('/public/images/mail_icon&16.png') %>"
+             title=' E-mail '/>
+      </a>
+		</span>
+    <% if (user.url) { %>
+		<span>
+			<a href="<%= user.url %>" target='_blank'>
+        <img class='user_icon' src="<%- staticFile('/public/images/paper_airplane_icon&16.png')%>"
+             title=' Trang web cá nhân '/>
+      </a>
+		</span>
+    <% } %>
+    <% if (user.weibo) { %>
+		<span>
+			<a href="<%= user.weibo %>" target='_blank'>
+        <img class='user_icon' src="<%- staticFile('/public/images/twitter_2_icon&16.png') %>"
+             title=' BiHiroshi '/>
+      </a>
+		</span>
+    <% } %>
+  </div>
+</div>

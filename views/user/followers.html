@@ -1,0 +1,19 @@
+﻿<%- partial('../sidebar') %>
+
+<div id='content'>
+  <div class='panel'>
+    <div class='header'>
+      <ul class='breadcrumb'>
+        <li><a href='/'> Nhà </a><span class='divider'>/</span></li>
+        <li class='active'> Chú ý  <%= user.loginname %>  Người </li>
+      </ul>
+    </div>
+    <div class='inner'>
+      <% if (users.length > 0) { %>
+      <%- partial('../user/user', { collection: users, as: 'user' }) %>
+      <% } else { %>
+      <p> Tuy nhiên, không có ai  Chú ý  Anh ấy </p>
+      <% } %>
+    </div>
+  </div>
+</div>
