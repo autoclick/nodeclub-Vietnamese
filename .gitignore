@@ -24,3 +24,6 @@ public/upload/*
 *.sublime-project
 *.sublime-workspace
 *.swp
+
+nodeclubvn.zip
+.ntvs_analysis.dat
