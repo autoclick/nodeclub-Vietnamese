@@ -1,0 +1,34 @@
+﻿{
+  "name": "nodeclub-Vietnamese",
+  "description": "Nodeclub translated to Vietnamese",
+  "website": "https://github.com/autoclick/nodeclub-Vietnamese",
+  "repository": "https://github.com/autoclick/nodeclub-Vietnamese",
+  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "success_url": "/",
+  "keywords": [
+    "node",
+    "express",
+    "production"
+  ],
+  "scripts": {
+    "postdeploy": "echo 'restarting'"
+  },
+  "addons": [
+    "mongohq"
+  ],
+  "env": {
+    "THRIFTY": {
+      "description": "run on a single (free) dyno",
+      "value": "true"
+    },
+    "COOKIE_SECRET": {
+      "description": "a secret key for signed cookies",
+      "generator": "secret"
+    },
+    "BLITZ_KEY": {
+      "description": "authorization key for blitz.io load testing (optional)",
+      "value": "",
+      "required": false
+    }
+  }
+}
